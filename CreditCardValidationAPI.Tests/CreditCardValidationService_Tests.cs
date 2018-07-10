@@ -45,5 +45,18 @@ namespace CreditCardValidationAPI.Tests
             //Assert
             Assert.Equal(CardType.Amex, result);
         }
+
+        [Fact]
+        public void When_Card_Number_Start_With_3_And_16_Digit_Long_Return_CardType_As_JCB()
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+
+            //Act
+            var result = service.ValidateCreditCard("3000000000000000");
+
+            //Assert
+            Assert.Equal(CardType.JCB, result);
+        }
     }
 }

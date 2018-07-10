@@ -8,6 +8,7 @@ namespace CreditCardValidationAPI.BLL.Domain
     {
         Visa,
         MasterCard,
-        Amex
+        Amex,
+        JCB
     }
 }
