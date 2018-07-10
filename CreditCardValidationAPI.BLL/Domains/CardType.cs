@@ -6,6 +6,7 @@ namespace CreditCardValidationAPI.BLL.Domain
 {
     public enum CardType
     {
-        Visa
+        Visa,
+        MasterCard
     }
 }

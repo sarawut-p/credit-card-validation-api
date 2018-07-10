@@ -14,10 +14,23 @@ namespace CreditCardValidationAPI.Tests
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCard("4");
+            var result = service.ValidateCreditCard("400000000000000");
 
             //Assert
             Assert.Equal(CardType.Visa, result);
+        }
+
+        [Fact]
+        public void When_Card_Number_Start_With_5_Return_CardType_As_MasterCard()
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+
+            //Act
+            var result = service.ValidateCreditCard("500000000000000");
+
+            //Assert
+            Assert.Equal(CardType.MasterCard, result);
         }
     }
 }
