@@ -93,5 +93,20 @@ namespace CreditCardValidationAPI.Tests
             //Assert
             Assert.Equal(CardType.Unknown, result);
         }
+
+        [Theory]
+        [InlineData("500000000000000A")]
+        [InlineData("40000B0000000000")]
+        public void When_AnyChacter_Is_Not_Numberic_Return_Unknown(string creditCardNumber)
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+
+            //Act
+            var result = service.ValidateCreditCardType(creditCardNumber);
+
+            //Assert
+            Assert.Equal(CardType.Unknown, result);
+        }
     }
 }

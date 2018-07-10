@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using CreditCardValidationAPI.BLL.Domain;
 using CreditCardValidationAPI.BLL.Domains;
@@ -22,6 +23,13 @@ namespace CreditCardValidationAPI.BLL.Services
 
         public CardType ValidateCreditCardType(string creditCardNumber)
         {
+            Func<char,bool> isNotNumber = (char character) => character < '0' || character > '9';
+
+            if (creditCardNumber.Any(isNotNumber))
+            {
+                return CardType.Unknown;
+            }
+
             var matchedRule = this._cardTypeRules.FirstOrDefault(rule => rule.IsMatch(creditCardNumber));
             return (matchedRule != null) ? matchedRule.CardType : CardType.Unknown;
         }
