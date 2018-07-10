@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CreditCardValidationAPI.BLL.Domain;
 using CreditCardValidationAPI.BLL.Domains;
+using CreditCardValidationAPI.SharedKernal;
 
 namespace CreditCardValidationAPI.BLL.Services
 {
@@ -21,11 +22,19 @@ namespace CreditCardValidationAPI.BLL.Services
             };
         }
 
+        public CardValidationResult ValidateCreditCardResult(string expiryDate)
+        {
+            if (!expiryDate.IsAllCharactorNumber())
+            {
+                return CardValidationResult.InValid;
+            }
+
+            throw new NotSupportedException();
+        }
+
         public CardType ValidateCreditCardType(string creditCardNumber)
         {
-            Func<char,bool> isNotNumber = (char character) => character < '0' || character > '9';
-
-            if (creditCardNumber.Any(isNotNumber))
+            if (!creditCardNumber.IsAllCharactorNumber())
             {
                 return CardType.Unknown;
             }

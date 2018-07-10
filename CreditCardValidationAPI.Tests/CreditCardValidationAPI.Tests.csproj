@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CreditCardValidationAPI.BLL\CreditCardValidationAPI.BLL.csproj" />
+    <ProjectReference Include="..\CreditCardValidationAPI.SharedKernal\CreditCardValidationAPI.SharedKernal.csproj" />
   </ItemGroup>
 
 </Project>
