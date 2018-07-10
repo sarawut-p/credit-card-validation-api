@@ -1,19 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using CreditCardValidationAPI.BLL.Domain;
+using CreditCardValidationAPI.BLL.Domains;
 
 namespace CreditCardValidationAPI.BLL.Services
 {
     public class CreditCardValidationService : ICreditCardValidationServices
     {
-        private class CardTypeRule
-        {
-            public const short DEFAULT_LENGTH = 16;
-            public short StartNumber;
-            public short Length = DEFAULT_LENGTH;
-            public CardType CardType;
-        }
-
         private List<CardTypeRule> _cardTypeRules;
 
         public CreditCardValidationService()
@@ -29,9 +22,7 @@ namespace CreditCardValidationAPI.BLL.Services
 
         public CardType ValidateCreditCardType(string creditCardNumber)
         {
-            var matchedRule = this._cardTypeRules.FirstOrDefault(rule=> creditCardNumber.StartsWith(rule.StartNumber.ToString()) && 
-                                                                        creditCardNumber.Length == rule.Length);
-
+            var matchedRule = this._cardTypeRules.FirstOrDefault(rule => rule.IsMatch(creditCardNumber));
             return (matchedRule != null) ? matchedRule.CardType : CardType.Unknown;
         }
     }
