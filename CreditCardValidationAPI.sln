@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27703.2035
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidationAPI", "CreditCardValidationAPI\CreditCardValidationAPI.csproj", "{AE56C9D3-8A8F-4840-8F4B-635511968232}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreditCardValidationAPI.Tests", "..\CreditCardValidationAPI.Tests\CreditCardValidationAPI.Tests.csproj", "{F5A3BB39-BD3C-428D-ACBE-FA171A65962C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AE56C9D3-8A8F-4840-8F4B-635511968232}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE56C9D3-8A8F-4840-8F4B-635511968232}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE56C9D3-8A8F-4840-8F4B-635511968232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5A3BB39-BD3C-428D-ACBE-FA171A65962C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5A3BB39-BD3C-428D-ACBE-FA171A65962C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5A3BB39-BD3C-428D-ACBE-FA171A65962C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5A3BB39-BD3C-428D-ACBE-FA171A65962C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
