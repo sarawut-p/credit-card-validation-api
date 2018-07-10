@@ -32,5 +32,18 @@ namespace CreditCardValidationAPI.Tests
             //Assert
             Assert.Equal(CardType.MasterCard, result);
         }
+
+        [Fact]
+        public void When_Card_Number_Start_With_3_And_15_Digit_Long_Return_CardType_As_Amex()
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+
+            //Act
+            var result = service.ValidateCreditCard("300000000000000");
+
+            //Assert
+            Assert.Equal(CardType.Amex, result);
+        }
     }
 }

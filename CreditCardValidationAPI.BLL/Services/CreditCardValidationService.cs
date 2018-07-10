@@ -6,14 +6,18 @@ using CreditCardValidationAPI.BLL.Domain;
 namespace CreditCardValidationAPI.BLL.Services
 {
     public class CreditCardValidationService : ICreditCardValidationServices
-    {
+    {       
         public CardType ValidateCreditCard(string creditCardNumber)
         {
             if (creditCardNumber.StartsWith("4"))
             {
                 return CardType.Visa;
             }
-            return CardType.MasterCard;
+            if (creditCardNumber.StartsWith("5"))
+            {
+                return CardType.MasterCard;
+            }
+            return CardType.Amex;
         }
     }
 }
