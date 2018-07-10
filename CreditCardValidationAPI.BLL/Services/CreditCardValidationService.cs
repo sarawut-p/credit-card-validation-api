@@ -17,11 +17,17 @@ namespace CreditCardValidationAPI.BLL.Services
             {
                 return CardType.MasterCard;
             }
-            if (creditCardNumber.StartsWith("3") && creditCardNumber.Length == 15)
+            if (creditCardNumber.StartsWith("3"))
             {
-                return CardType.Amex;
+                if(creditCardNumber.Length == 15) {
+                    return CardType.Amex;
+                }
+                if (creditCardNumber.Length == 16)
+                {
+                    return CardType.JCB;
+                }
             }
-            return CardType.JCB;
+            return CardType.Unknown;
         }
     }
 }

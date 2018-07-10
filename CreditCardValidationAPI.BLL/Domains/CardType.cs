@@ -9,6 +9,7 @@ namespace CreditCardValidationAPI.BLL.Domain
         Visa,
         MasterCard,
         Amex,
-        JCB
+        JCB,
+        Unknown
     }
 }

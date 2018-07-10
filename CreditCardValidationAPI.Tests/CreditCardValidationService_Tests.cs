@@ -58,5 +58,25 @@ namespace CreditCardValidationAPI.Tests
             //Assert
             Assert.Equal(CardType.JCB, result);
         }
+
+        [Theory]
+        [InlineData("100000000000000")]
+        [InlineData("200000000000000")]
+        [InlineData("600000000000000")]
+        [InlineData("700000000000000")]
+        [InlineData("800000000000000")]
+        [InlineData("900000000000000")]
+        [InlineData("000000000000000")]
+        public void When_CreditCardNumber_Not_Match_Specification_Return_CardType_As_Unknown(string creditCardNumber)
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+
+            //Act
+            var result = service.ValidateCreditCard(creditCardNumber);
+
+            //Assert
+            Assert.Equal(CardType.Unknown, result);
+        }
     }
 }
