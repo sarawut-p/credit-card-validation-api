@@ -7,7 +7,7 @@ namespace CreditCardValidationAPI.BLL.Services
 {
     public class CreditCardValidationService : ICreditCardValidationServices
     {       
-        public CardType ValidateCreditCard(string creditCardNumber)
+        public CardType ValidateCreditCardType(string creditCardNumber)
         {
             if (creditCardNumber.StartsWith("4"))
             {

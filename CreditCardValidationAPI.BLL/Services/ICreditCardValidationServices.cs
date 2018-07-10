@@ -7,6 +7,6 @@ namespace CreditCardValidationAPI.BLL.Services
 {
     interface ICreditCardValidationServices
     {
-        CardType ValidateCreditCard(string creditCardNumber);
+        CardType ValidateCreditCardType(string creditCardNumber);
     }
 }

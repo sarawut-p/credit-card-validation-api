@@ -5,7 +5,7 @@ using Xunit;
 
 namespace CreditCardValidationAPI.Tests
 {
-    public class CreditCardValidationService_Tests
+    public class ValidateCreditCardType_Tests
     {
         [Fact]
         public void When_Card_Number_Start_With_4_Return_CardType_As_Visa()
@@ -14,7 +14,7 @@ namespace CreditCardValidationAPI.Tests
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCard("400000000000000");
+            var result = service.ValidateCreditCardType("400000000000000");
 
             //Assert
             Assert.Equal(CardType.Visa, result);
@@ -27,7 +27,7 @@ namespace CreditCardValidationAPI.Tests
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCard("500000000000000");
+            var result = service.ValidateCreditCardType("500000000000000");
 
             //Assert
             Assert.Equal(CardType.MasterCard, result);
@@ -40,7 +40,7 @@ namespace CreditCardValidationAPI.Tests
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCard("300000000000000");
+            var result = service.ValidateCreditCardType("300000000000000");
 
             //Assert
             Assert.Equal(CardType.Amex, result);
@@ -53,7 +53,7 @@ namespace CreditCardValidationAPI.Tests
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCard("3000000000000000");
+            var result = service.ValidateCreditCardType("3000000000000000");
 
             //Assert
             Assert.Equal(CardType.JCB, result);
@@ -73,7 +73,7 @@ namespace CreditCardValidationAPI.Tests
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCard(creditCardNumber);
+            var result = service.ValidateCreditCardType(creditCardNumber);
 
             //Assert
             Assert.Equal(CardType.Unknown, result);
