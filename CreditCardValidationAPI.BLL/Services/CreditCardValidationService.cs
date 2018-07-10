@@ -9,11 +9,11 @@ namespace CreditCardValidationAPI.BLL.Services
     {       
         public CardType ValidateCreditCardType(string creditCardNumber)
         {
-            if (creditCardNumber.StartsWith("4"))
+            if (creditCardNumber.StartsWith("4") && creditCardNumber.Length == 16)
             {
                 return CardType.Visa;
             }
-            if (creditCardNumber.StartsWith("5"))
+            if (creditCardNumber.StartsWith("5") && creditCardNumber.Length == 16)
             {
                 return CardType.MasterCard;
             }

@@ -8,26 +8,26 @@ namespace CreditCardValidationAPI.Tests
     public class ValidateCreditCardType_Tests
     {
         [Fact]
-        public void When_Card_Number_Start_With_4_Return_CardType_As_Visa()
+        public void When_Card_Number_Start_With_4_And_Length_16_Return_CardType_As_Visa()
         {
             //Arrange
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCardType("400000000000000");
+            var result = service.ValidateCreditCardType("4000000000000000");
 
             //Assert
             Assert.Equal(CardType.Visa, result);
         }
 
         [Fact]
-        public void When_Card_Number_Start_With_5_Return_CardType_As_MasterCard()
+        public void When_Card_Number_Start_With_5_And_Length_16_Return_CardType_As_MasterCard()
         {
             //Arrange
             CreditCardValidationService service = new CreditCardValidationService();
 
             //Act
-            var result = service.ValidateCreditCardType("500000000000000");
+            var result = service.ValidateCreditCardType("5000000000000000");
 
             //Assert
             Assert.Equal(CardType.MasterCard, result);
@@ -68,6 +68,21 @@ namespace CreditCardValidationAPI.Tests
         [InlineData("900000000000000")]
         [InlineData("000000000000000")]
         public void When_CreditCardNumber_Not_Match_Specification_Return_CardType_As_Unknown(string creditCardNumber)
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+
+            //Act
+            var result = service.ValidateCreditCardType(creditCardNumber);
+
+            //Assert
+            Assert.Equal(CardType.Unknown, result);
+        }
+
+        [Theory]
+        [InlineData("400")]
+        [InlineData("500")]
+        public void When_CreditCardNumber_Start_With_4_And_5_Length_Is_Not_16_Return_Unknow(string creditCardNumber)
         {
             //Arrange
             CreditCardValidationService service = new CreditCardValidationService();
