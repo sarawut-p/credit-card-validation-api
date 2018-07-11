@@ -20,18 +20,21 @@ namespace CreditCardValidationAPI.Tests.CreditCardValidationService_tests
             Assert.Equal(CardValidationResult.InValid, result);
         }
 
-        //[Fact]
-        //public void When_ValidateResult_Month_Is_In_Incorrect_Format_Return_Invalid()
-        //{
-        //    //Arrange
-        //    CreditCardValidationService service = new CreditCardValidationService();
-        //    string expiryDate = "132018";
+        [Theory]
+        [InlineData("130000")]
+        [InlineData("001987")]
+        [InlineData("995789")]
+        public void When_Expiry_Date_In_Invalid_Format_Return_Invalid(string invalidExpiryDate)
+        {
+            //Arrange
+            CreditCardValidationService service = new CreditCardValidationService();
+            string expiryDate = invalidExpiryDate;
 
-        //    //Act
-        //    var result = service.ValidateCreditCardResult(expiryDate);
+            //Act
+            var result = service.ValidateCreditCardResult(expiryDate);
 
-        //    //Assert
-        //    Assert.Equal(CardType.Unknown, result);
-        //}
+            //Assert
+            Assert.Equal(CardValidationResult.InValid, result);
+        }
     }
 }
