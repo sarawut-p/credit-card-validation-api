@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using CreditCardValidationAPI.BLL.Domain;
 using CreditCardValidationAPI.BLL.Domains;
+using CreditCardValidationAPI.DAL.Repositories;
 using CreditCardValidationAPI.SharedKernal;
 
 namespace CreditCardValidationAPI.BLL.Services
@@ -11,9 +12,11 @@ namespace CreditCardValidationAPI.BLL.Services
     public class CreditCardValidationService : ICreditCardValidationServices
     {
         private List<CardTypeRule> _cardTypeRules;
+        private ICreditCardRepository _creditCardRepository;
 
-        public CreditCardValidationService()
+        public CreditCardValidationService(ICreditCardRepository creditCardRepository)
         {
+            this._creditCardRepository = creditCardRepository;
             this._cardTypeRules = new List<CardTypeRule>()
             {
                 new CardTypeRule(){ StartNumber = 4, CardType = CardType.Visa},
@@ -23,8 +26,13 @@ namespace CreditCardValidationAPI.BLL.Services
             };
         }
 
-        public CardValidationResult ValidateCreditCardResult(string expiryDate)
+        public CardValidationResult ValidateCreditCardResult(string creditCardNumber, string expiryDate)
         {
+            if (!this._creditCardRepository.IsExist(creditCardNumber))
+            {
+                return CardValidationResult.DoesNotExist;
+            }
+
             var expiryDateRexEx = new Regex(@"(0[1-9]|10|11|12)20[0-9]{2}");
             if (!expiryDateRexEx.IsMatch(expiryDate))
             {
