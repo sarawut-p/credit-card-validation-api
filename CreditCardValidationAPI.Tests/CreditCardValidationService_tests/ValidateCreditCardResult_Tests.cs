@@ -54,7 +54,7 @@ namespace CreditCardValidationAPI.Tests.CreditCardValidationService_tests
         {
             //Arrange
             string creditCardNumber = "3123456789123456";
-            string expiryDate = "1802539";
+            string expiryDate = "182053";
 
             service = builder.WhenCreditCardNumerIsNotExist()
                              .Build();
@@ -64,6 +64,21 @@ namespace CreditCardValidationAPI.Tests.CreditCardValidationService_tests
 
             //Assert
             Assert.Equal(CardValidationResult.DoesNotExist, result);
+        }
+
+        [Fact]
+        public void When_Visa__LeapYear_Return_Valid()
+        {
+            //Arrange
+            string creditCardNumber = "4123456789123456";
+            string expiryDate = "022020";
+
+
+            //Act
+            var result = service.ValidateCreditCardResult(creditCardNumber, expiryDate);
+
+            //Assert
+            Assert.Equal(CardValidationResult.Valid, result);
         }
     }
 }
