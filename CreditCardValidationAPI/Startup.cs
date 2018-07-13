@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CreditCardValidationAPI.BLL.Services;
+using CreditCardValidationAPI.DAL.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,8 @@ namespace CreditCardValidationAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddTransient<ICreditCardRepository, CredicardRepository>();
+            services.AddTransient<CreditCardValidationService, CreditCardValidationService>();
             services.AddMvc();
         }
 

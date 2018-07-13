@@ -8,7 +8,7 @@ namespace CreditCardValidationAPI.DAL.Repositories
     {
         public virtual bool IsExist(string credit)
         {
-            throw new NotImplementedException();
+            return true;
         }
     }
 }

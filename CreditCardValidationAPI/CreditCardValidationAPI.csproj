@@ -16,4 +16,9 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CreditCardValidationAPI.BLL\CreditCardValidationAPI.BLL.csproj" />
+    <ProjectReference Include="..\CreditCardValidationAPI.DAL\CreditCardValidationAPI.DAL.csproj" />
+  </ItemGroup>
+
 </Project>
