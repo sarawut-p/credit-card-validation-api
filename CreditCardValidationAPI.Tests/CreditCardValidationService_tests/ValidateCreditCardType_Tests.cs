@@ -1,5 +1,6 @@
 using CreditCardValidationAPI.BLL.Domain;
 using CreditCardValidationAPI.BLL.Services;
+using CreditCardValidationAPI.Tests.Services_Builder;
 using System;
 using Xunit;
 
@@ -7,12 +8,16 @@ namespace CreditCardValidationAPI.Tests
 {
     public class ValidateCreditCardType_Tests
     {
+        CreditCardValidationService service;
+
+        public ValidateCreditCardType_Tests()
+        {
+            service = new CreditCardValidationServiceBuilder().Build();
+        }
+
         [Fact]
         public void When_Card_Number_Start_With_4_And_Length_16_Return_CardType_As_Visa()
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType("4000000000000000");
 
@@ -23,9 +28,6 @@ namespace CreditCardValidationAPI.Tests
         [Fact]
         public void When_Card_Number_Start_With_5_And_Length_16_Return_CardType_As_MasterCard()
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType("5000000000000000");
 
@@ -36,9 +38,6 @@ namespace CreditCardValidationAPI.Tests
         [Fact]
         public void When_Card_Number_Start_With_3_And_15_Digit_Long_Return_CardType_As_Amex()
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType("300000000000000");
 
@@ -49,9 +48,6 @@ namespace CreditCardValidationAPI.Tests
         [Fact]
         public void When_Card_Number_Start_With_3_And_16_Digit_Long_Return_CardType_As_JCB()
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType("3000000000000000");
 
@@ -69,9 +65,6 @@ namespace CreditCardValidationAPI.Tests
         [InlineData("000000000000000")]
         public void When_CreditCardNumber_Not_Match_Specification_Return_CardType_As_Unknown(string creditCardNumber)
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType(creditCardNumber);
 
@@ -84,9 +77,6 @@ namespace CreditCardValidationAPI.Tests
         [InlineData("500")]
         public void When_CreditCardNumber_Start_With_4_And_5_Length_Is_Not_16_Return_Unknow(string creditCardNumber)
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType(creditCardNumber);
 
@@ -99,9 +89,6 @@ namespace CreditCardValidationAPI.Tests
         [InlineData("40000B0000000000")]
         public void When_AnyChacter_Is_Not_Numberic_Return_Unknown(string creditCardNumber)
         {
-            //Arrange
-            CreditCardValidationService service = new CreditCardValidationService();
-
             //Act
             var result = service.ValidateCreditCardType(creditCardNumber);
 

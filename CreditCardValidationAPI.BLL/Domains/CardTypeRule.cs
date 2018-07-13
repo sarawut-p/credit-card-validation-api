@@ -11,6 +11,7 @@ namespace CreditCardValidationAPI.BLL.Domains
         public short StartNumber;
         public short Length;
         public CardType CardType;
+        public Func<int,bool> IsValidCriteria = (int expiryYear) => true;
 
         public CardTypeRule()
         {
@@ -21,6 +22,11 @@ namespace CreditCardValidationAPI.BLL.Domains
         {
             return creditCardNumber.StartsWith(this.StartNumber.ToString()) &&
                    creditCardNumber.Length == this.Length;
+        }
+
+        public bool IsValid(int expiryYear)
+        {
+            return IsValidCriteria(expiryYear);
         }
     }
 }

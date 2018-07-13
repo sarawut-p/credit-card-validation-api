@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CreditCardValidationAPI.DAL\CreditCardValidationAPI.DAL.csproj" />
     <ProjectReference Include="..\CreditCardValidationAPI.SharedKernal\CreditCardValidationAPI.SharedKernal.csproj" />
   </ItemGroup>
 
